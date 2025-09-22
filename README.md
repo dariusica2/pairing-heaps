@@ -1,147 +1,145 @@
-Assignment: Pairing Heaps in Racket
+# Assignment: Pairing Heaps in Racket
 
-This assignment focuses on implementing and using pairing heaps (PH) in Racket through 4 progressive stages.
+This assignment focuses on implementing and using pairing heaps (PH) in *Racket* through 4 progressive phases.
 
-Stage 1 – Basic Implementation of a Max-PH
+## Stage 1 – Basic Implementation of a Max-PH
 
-Learn the representation of pairing heaps as lists in Racket.
+This stage covers:
 
-Implement a max pairing heap and its fundamental operations:
+- Representation of pairing heaps as lists in Racket.
 
-empty-ph
+- Implementing a max pairing heap and its fundamental operations:
 
-(val->ph val)
+  - empty-ph
 
-(ph-empty? ph)
+  - (val->ph val)
 
-(ph-root ph)
+  - (ph-empty? ph)
 
-(ph-subtrees ph)
+  - (ph-root ph)
 
-(merge ph1 ph2)
+  - (ph-subtrees ph)
 
-(ph-insert val ph)
+  - (merge ph1 ph2)
 
-(list->ph lst)
+  - (ph-insert val ph)
 
-(two-pass-merge-LR phs)
+  - (list->ph lst)
 
-(two-pass-merge-RL phs)
+  - (two-pass-merge-LR phs)
 
-(tournament-merge phs)
+  - (two-pass-merge-RL phs)
 
-(ph-del-root ph)
+  - (tournament-merge phs)
 
-Goal: practice lists, recursion (stack and tail), conditionals, and booleans.
+  - (ph-del-root ph)
 
-⚠️ Penalties:
+Main goals are practicing the use of lists, recursion (stack and tail), conditionals and booleans.
 
-Not following the required recursion type: -10p/function.
+## Stage 2 – Abstraction and Movies
 
-Using list operators instead of PH interface: not penalized, but decreases readability.
+This stage covers:
 
-📌 Stage 2 – Abstraction and Movies
+- Generalization of PH operations to support min-heaps, max-heaps, and custom orderings:
 
-Generalize PH operations to support min-heaps, max-heaps, and custom orderings:
+  - merge-f – general merging function
 
-merge-f – general merging function.
+  - merge-max, merge-min – derived via currying
 
-merge-max, merge-min – derived via currying.
+- Defining a movie structure with fields:
 
-Define a movie structure with fields:
+  - name
 
-name, rating, genre, duration, others.
+  - rating
 
-Implement movie-related functions:
+  - genre
 
-(lst->movie lst)
+  - duration
 
-(mark-as-seen m)
+  - others
 
-(mark-as-seen-from-list movies seen)
+- Implementing movie-related functions:
 
-(extract-seen movies)
+  - (lst->movie lst)
 
-(rating-stats movies)
+  - (mark-as-seen m)
 
-(extract-name-rating movies)
+  - (mark-as-seen-from-list movies seen)
 
-(make-rating-ph movies)
+  - (extract-seen movies)
 
-(before? a b L)
+  - (rating-stats movies)
 
-(make-genre-ph movies genres)
+  - (extract-name-rating movies)
 
-Goal: strengthen knowledge of higher-order functions, anonymous functions, currying, and partial application.
+  - (make-rating-ph movies)
 
-⚠️ Penalties:
+  - (before? a b L)
 
-Missing point-free definitions for merge-max, merge-min, etc.: -5p/function.
+  - (make-genre-ph movies genres)
 
-Using explicit recursion instead of higher-order functions where required: -10p/function.
+Main goals are strengthening knowledge of higher-order functions, currying, and partial application.
 
-📌 Stage 3 – Advanced Applications
+## Stage 3 – Advanced Applications
 
-Apply PHs to:
+This stage covers:
 
-Extract the best k elements by a given criterion.
+- Applying PHs to:
 
-Merge values across multiple PHs.
+  - Extract the best k elements by a given criterion.
 
-Functions:
+  - Merge values across multiple PHs.
 
-(best-k op movies k) – general version.
+- Implementeing the following functions:
 
-(best-k-rating movies k)
+  - (best-k op movies k) – general version
 
-(best-k-duration movies k)
+  - (best-k-rating movies k)
 
-(update-pairs p pairs)
+  - (best-k-duration movies k)
 
-(best-k-ratings-overall pairs k)
+  - (update-pairs p pairs)
 
-Goal: use let, let*, and named let for ad-hoc recursion.
+  - (best-k-ratings-overall pairs k)
 
-⚠️ Penalties:
+Main goals are using let, let*, and named let for ad-hoc recursion.
 
-best-k-rating, best-k-duration not defined as applications of best-k: -5p/function.
+## Stage 4 – Dynamic Median and Streams
 
-Missing named let where required: -20p/function.
+This stage covers:
 
-📌 Stage 4 – Dynamic Median and Streams
+- Computing the dynamic median of movie ratings using:
 
-Compute the dynamic median of movie ratings using:
+  - a max-PH for the smaller half
 
-a max-PH for the smaller half,
+  - a min-PH for the larger half
 
-a min-PH for the larger half,
+  - constant rebalancing between the two
+  
+- The introduction of streams:
 
-constant rebalancing between the two.
+  - Inputs are streams of reviews (movie-name . rating).
 
-Introduce streams:
+  - Outputs are streams of states/medians.
 
-Inputs are streams of reviews (movie-name . rating).
+- Implementing the following functions:
 
-Outputs are streams of states/medians.
+  - (add-rating quad rating)
 
-Functions:
+  - (reviews->quads reviews)
 
-(add-rating quad rating)
+  - (quads->medians quads)
 
-(reviews->quads reviews)
+Main goals are working with potentially infinite streams, modeling temporal evolution.
 
-(quads->medians quads)
-
-Goal: work with potentially infinite streams, modeling temporal evolution.
-
-✅ Summary
+## In summary...
 
 This assignment covers:
 
-Implementation of functional data structures in Racket.
+- Implementation of functional data structures in Racket.
 
-Abstraction and reusable design.
+- Abstraction and reusable design.
 
-Use of higher-order functions, currying, let/named let.
+- Use of higher-order functions, currying, let/named let.
 
-Data processing in infinite streams.
+- Data processing in infinite streams.
