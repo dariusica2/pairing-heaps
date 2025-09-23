@@ -132,7 +132,7 @@ This stage covers:
 
 Main goals are working with potentially infinite streams, modeling temporal evolution.
 
-## In summary...
+## In Summary...
 
 This assignment covers:
 
